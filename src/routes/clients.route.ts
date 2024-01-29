@@ -4,6 +4,6 @@ import { Router } from "express"
 const clientRouter = Router();
 
 clientRouter.get("/clients", getAllClients)
-    .post("/registeclient", registerClient);
+    .post("/registerclient", registerClient);
 
 export default clientRouter;

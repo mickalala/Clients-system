@@ -12,8 +12,11 @@ async function getAllClients(req: Request, res: Response) {
 }
 
 async function registerClient(req: Request, res: Response) {
+    const { username, email, phone } = req.body;
+    const body = { username, email, phone };
     try {
-
+        await clientsService.registerClient(body)
+        res.sendStatus(httpStatus.CREATED)
     } catch (error) {
         console.log(error)
     }

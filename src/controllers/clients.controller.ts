@@ -1,19 +1,21 @@
 import { Request, Response } from "express";
+import clientsService from "../services/clients.service";
+import httpStatus from "http-status";
 
-
-function getAllClients(req: Request, res: Response) {
+async function getAllClients(req: Request, res: Response) {
     try {
-
+        const clients = await clientsService.getAllClients();
+        res.status(httpStatus.OK).send(clients)
     } catch (error) {
-
+        console.log(error)
     }
 }
 
-function registerClient(req: Request, res: Response) {
+async function registerClient(req: Request, res: Response) {
     try {
 
     } catch (error) {
-
+        console.log(error)
     }
 }
 

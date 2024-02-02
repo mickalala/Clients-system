@@ -9,8 +9,8 @@ async function getAllClients() {
 
 //função que pede pro banco criar meus clients:
 async function registerClient(body: CreateClient) {
-    return await db.query(`INSERT INTO customers("username","email","phone") VALUES ($1,$2,$3);`,
-        [body.username, body.email, body.phone]);
+    return await db.query(`INSERT INTO customers("username","email","phone","addresscoordinates") VALUES ($1,$2,$3,$4);`,
+        [body.username, body.email, body.phone, body.addresscoordinates]);
 }
 
 //função que filtra por nome do client:

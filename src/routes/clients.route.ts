@@ -1,4 +1,4 @@
-import { filterClient, getAllClients, registerClient } from "../controllers/clients.controller";
+import { filterClient, getAllClients, registerClient, shortestDistance } from "../controllers/clients.controller";
 import { Router } from "express"
 
 const clientRouter = Router();
@@ -8,5 +8,6 @@ const clientRouter = Router();
 clientRouter.get("/clients", getAllClients)
     .post("/registerclient", registerClient)
     .get("/filter", filterClient)
+    .get("/distance",shortestDistance);
 
 export default clientRouter;

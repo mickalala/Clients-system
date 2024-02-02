@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
 import clientsService from "../services/clients.service";
 import httpStatus from "http-status";
-import shortestDistanceService from "../services/distance.service";
+import minDistanceService from "../services/distance.service";
+
 //função que lista todos os clientes:
 export async function getAllClients(req: Request, res: Response) {
     try {
@@ -39,9 +40,9 @@ export async function filterClient(req: Request, res: Response) {
 }
 
 //função para a rota de calculo da menor distância
-export async function shortestDistance(req: Request, res: Response) {
+export async function minDistance(req: Request, res: Response) {
     try {
-        const distance = await shortestDistanceService();
+        const distance = await minDistanceService();
         res.status(httpStatus.OK).send(distance)
     } catch (error) {
         console.log(error)

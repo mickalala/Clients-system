@@ -19,6 +19,21 @@ async function registerClient(body: CreateClient) {
     }
 }
 
-const clientsService = { getAllClients, registerClient }
+async function filterClient(filter: any, value: any) {
+    try {
+        let client;
+        if (filter == "username") {
+            client = await clientsRepository.getByName(value)
+        } else if (filter == "email") {
+            client = await clientsRepository.getByEmail(value)
+        } else {
+            client = await clientsRepository.getByPhone(value)
+        }
+        return client.rows[0];
+    } catch (error) {
+        console.log(error)
+    }
+}
+const clientsService = { getAllClients, registerClient, filterClient }
 
 export default clientsService;

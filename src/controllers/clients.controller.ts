@@ -17,7 +17,7 @@ export async function getAllClients(req: Request, res: Response) {
 //função que registra o cliente:
 export async function registerClient(req: Request, res: Response) {
     const { username, email, phon, addresscoordinates } = req.body;
-    let phone= Number(phon)
+    let phone= Number(phon)  
     const body = { username, email, phone, addresscoordinates };
     try {
         await clientsService.registerClient(body)

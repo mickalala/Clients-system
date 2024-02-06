@@ -9,6 +9,7 @@ async function getAllClients() {
 
 //função que pede pro banco criar meus clients:
 async function registerClient(body: CreateClient) {
+    console.log(body)
     return await db.query(`INSERT INTO customers("username","email","phone","addresscoordinates") VALUES ($1,$2,$3,$4);`,
         [body.username, body.email, body.phone, body.addresscoordinates]);
 }

@@ -15,7 +15,8 @@ async function registerClient(body: CreateClient) {
         const client = await clientsRepository.registerClient(body);
         return client;
     } catch (error) {
-        throw error;
+        console.log(error)
+        throw error.message;
     }
 }
 

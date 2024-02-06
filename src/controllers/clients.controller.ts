@@ -10,21 +10,22 @@ export async function getAllClients(req: Request, res: Response) {
         res.status(httpStatus.OK).send(clients)
     } catch (error) {
         console.log(error)
-        res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
+        res.status(httpStatus.INTERNAL_SERVER_ERROR).send(error.message);
     }
 }
 
 //função que registra o cliente:
 export async function registerClient(req: Request, res: Response) {
-    const { username, email, phon, addresscoordinates } = req.body;
-    let phone= Number(phon)  
+    const { username, email, phone, coordx, coordy } = req.body;
+    let addresscoordinates = [];
+    addresscoordinates.push(Number(coordx), Number(coordy))
     const body = { username, email, phone, addresscoordinates };
     try {
         await clientsService.registerClient(body)
         res.sendStatus(httpStatus.CREATED)
     } catch (error) {
         console.log(error)
-        res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
+        res.status(httpStatus.INTERNAL_SERVER_ERROR).send(error.message);
     }
 }
 

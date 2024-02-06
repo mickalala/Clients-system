@@ -7,7 +7,7 @@ const clientRouter = Router();
 // /clients é a rota que lista os clientes e /registerclient onde podemos registrar o cliente
 clientRouter.get("/clients", getAllClients)
     .post("/registerclient", registerClient)
-    .get("/filter", filterClient)
+    .get("/client", filterClient)
     .get("/distance",minDistance);
 
 export default clientRouter;

@@ -31,7 +31,8 @@ export async function registerClient(req: Request, res: Response) {
 
 //função para filtrar cliente, deve ser recebido como body o tipo(username, email ou phone) e o valor:
 export async function filterClient(req: Request, res: Response) {
-    const { filter, value } = req.body;
+    const filter = req.query.filter;
+    const value = req.query.value;
     try {
         const client = await clientsService.filterClient(filter, value)
         res.status(httpStatus.OK).send(client)
